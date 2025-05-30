@@ -31,9 +31,6 @@ jobs:
             touch file123.txt
             echo "file found $(find . -name *.txt)"
             echo $EMULATOR_PORTS
-            #for port in $EMULATOR_PORTS; do
-            #  echo "Port: $port"
-            #done
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows

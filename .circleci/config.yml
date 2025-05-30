@@ -3,7 +3,7 @@
 version: 2.1
 
 aliases:
-  - &my-array >
+  - numbers: &my_array
     - 1
     - 2
 
@@ -26,7 +26,7 @@ jobs:
       - run:
           name: "Say hello"
           environment:
-            EMULATOR_PORTS: *my-array
+            EMULATOR_PORTS: *my_array
           command: |
             touch file123.txt
             echo "file found $(find . -name *.txt)"

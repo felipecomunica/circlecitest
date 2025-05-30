@@ -3,8 +3,10 @@
 version: 2.1
 
 aliases:
-  - &my_array
-    1 2
+  # list of emulator that will run slave app
+  # to run 4 emulator use: 5554, 5556, 5558, 5560
+  - &emulator-ports
+    5554 5556
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/jobs-steps/#jobs-overview & https://circleci.com/docs/configuration-reference/#jobs
@@ -25,9 +27,9 @@ jobs:
       - run:
           name: "Say hello"
           environment:
-            EMULATOR_PORTS: *my_array
+            emulator_ports: *emulator-ports
           command: |
-            for port in $EMULATOR_PORTS; do
+            for port in "${emulator_ports[@]}"; do
             echo "Port: '$port'"
             done
 

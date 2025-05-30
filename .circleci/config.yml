@@ -3,7 +3,7 @@
 version: 2.1
 
 aliases:
-  - my-array
+  - &my-array
     - 1
     - 2
 

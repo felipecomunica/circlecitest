@@ -18,9 +18,6 @@ jobs:
       # See: https://circleci.com/developer/images/image/cimg/base
       - image: cimg/base:current
 
-    environment:
-      EMULATOR_PORTS: *my-array
-
     # Add steps to the job
     # See: https://circleci.com/docs/jobs-steps/#steps-overview & https://circleci.com/docs/configuration-reference/#steps
     steps:
@@ -28,6 +25,8 @@ jobs:
       - checkout
       - run:
           name: "Say hello"
+          environment:
+            EMULATOR_PORTS: *my-array
           command: |
             touch file123.txt
             echo "file found $(find . -name *.txt)"

@@ -5,7 +5,7 @@ version: 2.1
 aliases:
   # list of emulator that will run slave app
   # to run 4 emulator use: 5554, 5556, 5558, 5560
-  - &emulator-ports
+  - &emulator-ports-alias
     5554 5556
 
 # Define a job to be invoked later in a workflow.
@@ -27,10 +27,11 @@ jobs:
       - run:
           name: "Say hello"
           environment:
-            emulator_ports: *emulator-ports
+            EMULATOR_PORTS: *emulator-ports-alias
           command: |
-            for port in $emulator_ports; do
-            echo "Port: '$port'"
+            emulator_ports=($EMULATOR_PORTS)
+            for port in "${emulator_ports[@]}"; do
+              echo "Installing APK on emulator-${port}"
             done
 
 # Orchestrate jobs using workflows
